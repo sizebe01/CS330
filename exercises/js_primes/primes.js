@@ -83,33 +83,47 @@ function NumberCheck() {
 function printNprimes(num) {
   let params = new URLSearchParams(window.location.search);
   let n = params.get("n");
- 
-  
   let table = document.querySelector("thead");
   let ccc = document.createElement("th");
+  ccc.classList = "table table-dark table-striped table-hover";
+
   if(n== null){
     ccc.innerText = "330 Prime numbers";
   }
   else{
-    ccc.innerText = n + " Prime numbers";
+    ccc.innerText = "First " + n + " Prime numbers";
   }
   
   table.appendChild(ccc);
-  ccc.classList = "table table-dark table-striped table-hover";
 
-  let tbody = document.querySelector("tbody");
-  let ddd = document.createElement("tr");
-  ddd.classList = "table table-dark table-striped table-hover";
 
   if(n == null){
-    
-    ddd.innerText = getNprimes(330);
+    var myStringArray = getNprimes(330);
+    var arrayLength = myStringArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+      let tbody = document.querySelector("tbody");
+      let ddd = document.createElement("tr");
+      ddd.classList = "alert alert-info student";
+      ddd.innerText = myStringArray[i];
+      tbody.appendChild(ddd);
+    }
   }
   else{
-    ddd.innerText = getNprimes(n);
+    var myStringArray = getNprimes(n);
+    var arrayLength = myStringArray.length;
+    for (var i = 0; i < arrayLength; i++) {
+        let tbody = document.querySelector("tbody");
+        let ddd = document.createElement("tr");
+        ddd.classList = "alert alert-info studentlert alert-primary student";
+        ddd.innerText = myStringArray[i];
+        tbody.appendChild(ddd);
+    
+        
+    }
+
   }
  
-  table.appendChild(ddd); 
+   
     
   
 }
