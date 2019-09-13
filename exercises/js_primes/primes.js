@@ -3,11 +3,11 @@
 'use strict';
 
 function isPrime(n) {
-  if (n===1)
+  if (n==1)
   {
     return false;
   }
-  else if(n === 2)
+  else if(n == 2)
   {
     return true;
   }else
@@ -49,7 +49,7 @@ function NameCheck() {
     aaa.classList = "alert alert-primary student";
 
     if(n == null){
-        aaa.innerText = " Hello Student, Thanks for looking at my awsome content! ";
+        aaa.innerText = " Hello Student, Thanks for looking at my awesome content! ";
         
     } else{
         aaa.innerText = 'Hello '+ n + ", Thanks for looking at my awesome content!";
@@ -71,13 +71,13 @@ function NumberCheck() {
       bbb.innerText = "330 is not a prime number. ";
     } else{
         if (isPrime(n) == false){
-          bbb.innerText =n + " is not a prime number.";
+          bbb.innerText = n + " is not a prime number.";
         }
         if (isPrime(n) == true){
           bbb.innerText = n + " is a prime number.";
         }
     } 
-    body.appendChild(bbb)
+    body.appendChild(bbb);
 }
 
 function printNprimes(num) {
