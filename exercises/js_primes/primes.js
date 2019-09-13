@@ -43,11 +43,18 @@ function NameCheck() {
 
     let params = new URLSearchParams(window.location.search);
     let n = params.get("name");
+
+    let body = document.querySelector("body");
+    let aaa = document.createElement("p");
+    aaa.classList = "alert alert-primary student";
+
     if(n == null){
-        document.write(" Hello Student, Thanks for looking at my awsome content! ");
+        aaa.innerText = " Hello Student, Thanks for looking at my awsome content! ";
+        
     } else{
-        document.write(" Hello ", n,", Thanks for looking at my awsome content! ");
+        aaa.innerText = 'Hello '+ n + ", Thanks for looking at my awesome content!";
     }
+    body.appendChild(aaa);
 }
 
 
@@ -55,30 +62,46 @@ function NumberCheck() {
 
     let params = new URLSearchParams(window.location.search);
     let n = params.get("n");
+
+    let body = document.querySelector("body");
+    let bbb = document.createElement("p");
+    bbb.classList = "alert alert-danger student";
+
     if(n == null){
-        document.write("330 is not a prime number. ");
+      bbb.innerText = "330 is not a prime number. ";
     } else{
         if (isPrime(n) == false){
-            document.write(n," is not a prime number. ")
+          bbb.innerText =n + " is not a prime number.";
         }
         if (isPrime(n) == true){
-            document.write(n," is a prime number. ")
+          bbb.innerText = n + " is a prime number.";
         }
     } 
+    body.appendChild(bbb)
 }
 
 function printNprimes(num) {
   let params = new URLSearchParams(window.location.search);
   let n = params.get("n");
+
+  let table = document.querySelector("tbody");
+  let ccc = document.createElement("th");
+  ccc.innerText = n +"prime numbers";
+  ccc.classList = "alert alert-info student";
+
   if(n == null){
-    document.write("First 330 prime numbers are: ", getNprimes(330));
+    
+    ccc.innerText = "First 330 prime numbers are: " + getNprimes(330);
   }
   else{
-    document.write("First ",n, " prime numbers are: ",getNprimes(n));
+    ccc.innerText = "First "+n+ " prime numbers are: " + getNprimes(n);
   }
+ 
+    table.appendChild(ccc);
+    
+  
 }
 
-
+printNprimes();
 NameCheck();
 NumberCheck();
-printNprimes();
