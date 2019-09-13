@@ -83,21 +83,33 @@ function NumberCheck() {
 function printNprimes(num) {
   let params = new URLSearchParams(window.location.search);
   let n = params.get("n");
-
-  let table = document.querySelector("tbody");
+ 
+  
+  let table = document.querySelector("thead");
   let ccc = document.createElement("th");
-  ccc.innerText = n +"prime numbers";
-  ccc.classList = "alert alert-info student";
+  if(n== null){
+    ccc.innerText = "330 Prime numbers";
+  }
+  else{
+    ccc.innerText = n + " Prime numbers";
+  }
+  
+  table.appendChild(ccc);
+  ccc.classList = "table table-dark table-striped table-hover";
+
+  let tbody = document.querySelector("tbody");
+  let ddd = document.createElement("tr");
+  ddd.classList = "table table-dark table-striped table-hover";
 
   if(n == null){
     
-    ccc.innerText = "First 330 prime numbers are: " + getNprimes(330);
+    ddd.innerText = getNprimes(330);
   }
   else{
-    ccc.innerText = "First "+n+ " prime numbers are: " + getNprimes(n);
+    ddd.innerText = getNprimes(n);
   }
  
-    table.appendChild(ccc);
+  table.appendChild(ddd); 
     
   
 }
