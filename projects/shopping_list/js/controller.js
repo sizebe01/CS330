@@ -76,7 +76,8 @@ function populateSelect(selectId, sList) {
 }
 
 $(document).ready(function () {
-    readdrows();
+    
     populateSelect('store', stores);
     populateSelect('category', sections);
+    readdrows();
 });
