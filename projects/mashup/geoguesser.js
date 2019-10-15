@@ -33,7 +33,7 @@ async function initialize() {
     document.getElementById("distance").innerHTML = ' '; 
 
 
-    var number = await Promise.all([getData(`http://api.openweathermap.org/data/2.5/weather?id=${randomLoc()}&APPID=2e35570eab59959f85e835dabdddc726`)]);
+    var number = await Promise.all([getData(`https://api.openweathermap.org/data/2.5/weather?id=${randomLoc()}&APPID=2e35570eab59959f85e835dabdddc726`)]);
     true_location = [];
     true_location.push(number[0].coord.lat,number[0].coord.lon);
     current_name = (number[0].name + ", " + number[0].sys.country);
