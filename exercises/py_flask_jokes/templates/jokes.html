@@ -1,3 +1,39 @@
 {% extends "base.html" %}
+
 {% block content %}
-{% endblock %}
+   
+
+
+<div class="w-50 p-50 mx-auto p-3 mb-2 bg-light text-dark font-weight-bold text-center">
+    <h1>PyJokes Exercise 5!</h1>
+    <form action="/joke" method="POST" action="{{ url_for('joke') }}">
+
+    <select class="form-control" name= "language">
+        {% for lang in language %}
+        <option value= "{{lang}}" SELECTED>{{lang}}</option>"
+        {% endfor %}
+    </select>
+    
+
+    <select class="form-control" name="joketype">
+        {% for joke in joketype %}
+        <option value= "{{joke}}" SELECTED>{{joke}}</option>"
+        {% endfor %}
+    </select>
+    <br/>
+    <input class="btn btn-default mt-0" type="submit" name="submit_button" value="Get Joke">
+    </form>
+
+
+    <h3><a href = "{{ url_for('index') }}">Back to home Page</a></h3>
+    
+    {%for joke in jokes%}
+    <h1>{{joke}}</h1>
+    {% endfor %}
+
+    <h1 class = "text-danger">{{error}}</h1>
+    
+</div>
+{% endblock content%}
+
+
