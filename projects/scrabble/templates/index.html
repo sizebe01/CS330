@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="alert alert-info" style="text-align:center">
+    <h1>Scrabble</h1>
+</div>
+<form name='scrabbleForm' action='/result' action="{{ url_for('scrabble') }}" method = 'POST'>
+    <div class='mt-5 container'>
+        <div class='form'>
+            <div class='row'>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter1'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter2'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter3'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter4'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter5'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter6'>
+                </div>
+                <div class='col'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="?" maxlength="1" name='letter7'>
+                </div>
+            </div>
+            <div class='row mt-5'>
+                <div class="col form-control-lg">
+                    <input type="checkbox" onclick='toggleDisabled()' value="attach" name="attachExistingCheck">
+                    <label for="attachExistingCheck">Attach to existing</label>
+                </div>
+                <div class='col-9'>
+                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="Existing letter(s)" id='existingletters' name='existingletters'>
+                </div>
+            </div>
+            <div class='row mt-5'>
+                <select name="dict" class="form-control form-control-lg">
+                    <option value='american-english'>American</option>
+                    <option value='british-english'>British</option>
+                </select>
+            </div>
+            <div class='row mt-5'>
+                    <button type="submit" class="btn btn-primary btn-lg btn-block rounded">Help me!</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div class="container">
+
+{% block table %}
+
+{% endblock %}
+
+</div>
+
+{% endblock %}
