@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="alert alert-info" style="text-align:center">
-    <h1>Scrabble</h1>
+    <h1>Scrabble Helper</h1>
 </div>
 <form name='scrabbleForm' action='/result' action="{{ url_for('scrabble') }}" method = 'POST'>
     <div class='mt-5 container'>
@@ -36,7 +36,7 @@
                     <label for="attachExistingCheck">Attach to existing</label>
                 </div>
                 <div class='col-9'>
-                    <input type="text" class='form-control form-control-lg border border-dark rounded' placeholder="Existing letter(s)" id='existingletters' name='existingletters'>
+                    <input type="text" disabled="disabled" class='form-control form-control-lg border border-dark rounded' placeholder="Existing letter(s)" id='existingletters' name='existingletters'>
                 </div>
             </div>
             <div class='row mt-5'>
@@ -48,6 +48,7 @@
             <div class='row mt-5'>
                     <button type="submit" class="btn btn-primary btn-lg btn-block rounded">Help me!</button>
             </div>
+            
         </div>
     </div>
 </form>
