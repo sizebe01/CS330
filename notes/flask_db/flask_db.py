@@ -2,7 +2,7 @@ import os
 import requests
 from flask import Flask, request, render_template, send_from_directory
 from flask import redirect, url_for
-import psycopg2
+import cd
 import records
 
 app = Flask(__name__)
@@ -10,7 +10,7 @@ app = Flask(__name__)
 
 def get_data_from_db(query: str) -> list:
     try:
-        conn = psycopg2.connect(user="yasiro01", host="knuth.luther.edu", port=5432, dbname="world")
+        conn = psycopg2.connect(user="sizebe01", host="knuth.luther.edu", port=5432, dbname="world")
     except:
         raise ConnectionError("Bad stuff")
     cur = conn.cursor()
@@ -39,3 +39,5 @@ def country():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
+
+

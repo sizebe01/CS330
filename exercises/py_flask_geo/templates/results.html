@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+       
+        <div class="row">
+            <div class="col-12">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Country Name</th>
+                            <th>Continent</th>
+                            <th>Region</th>
+                            <th>Capital Name</th>
+                            <th>Surface Area</th>
+                            <th>Population</th>
+                            <th>Form of Government</th>
+                            <th>Head of State</th>
+                        </tr>
+                    </thead>
+                    <p>{{results}}</p>
+                    <div class="col-12">
+                        <form method="POST">
+                            <div class="row">
+                                <div class="col">
+                                    <select class="form-control" name="code">
+                                        {% for o in options %}
+                                        <option value="{{o[0]}}" {% if code == o[0] %}selected="selected"{% endif %}>{{o[1]}}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="">
+                                    <input type="submit" class="btn btn-primary" value="Get Info">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <br/>
+                    <tbody>
+                        {% for o in results %}
+                        <tr>
+                            <td>{{o.localname + " (" + o.code + ")"}}</td>
+                            <td>{{o[2]}}</td>
+                            <td>{{o[3]}}</td>
+                            <td>{{o[16]}}</td>
+                            <td>{{o[4]}}</td>
+                            <td>{{o[6]}}</td>
+                            <td>{{o[11]}}</td>
+                            <td>{{o[12]}}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            
+
+{% endblock %}

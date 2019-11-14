@@ -3,14 +3,19 @@
         <link rel="stylesheet" href="static/css/bootstrap.css" crossorigin="anonymous">
     </head>
     <body>
-        <div class="container">
-            <div class="row">
-                <div class="col"><a href="/country">Country info</a></div>
-                <div class="col"><a href="/region">Region info</a></div>
-                <div class="col"><a href="/continent">Continent info</a></div>
+            <div class="row" style="margin: 20px 0">
+                <div class="col-4 text-center">
+                    <a href="/continent">Continent</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="/region">Region</a>
+                </div>
+                <div class="col-4 text-center">
+                    <a href="/country">Country</a>
+                </div>
             </div>
-        </div>
         {% block content %}
+        
         {% endblock %}
         <script src="static/js/jquery.js" crossorigin="anonymous"></script>
         <script src="static/js/popper.js" crossorigin="anonymous"></script>

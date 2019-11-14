@@ -1,41 +1,51 @@
-import requests
-from flask import Flask, request, render_template, send_from_directory
+from flask import Flask
 from flask import redirect, url_for
+from flask import request, make_response
+from flask import render_template
 import records
 
 app = Flask(__name__)
 
+db = records.Database("postgresql://sizebe01:@knuth.luther.edu/world")
 
-USER = ""
-DB_NAME = "world"
-HOST = "localhost"
-PORT = 2345
-
-
-def get_data_from_db(query: str) -> list:
-    db = records.Database(f"postgresql://{USER}:@{HOST}:{PORT}/{DB_NAME}")
-    # retrieve data from the database and return to the user
-    pass
-
-
-@app.route("/", methods=["GET", "POST"])
+@app.route('/')
 def index():
-    if request.method == "GET":
-        # display links to 3 options (country / region / continent)
-        pass
-    else:
-        # retrieve data from the database based on the selected option and present it to the user
-        pass
+    
+    return redirect(url_for('country'))
+
+@app.route('/country', methods=['GET', 'POST'])
+def country():
+    optionsQuery = db.query("select code, name from country")
+    if request.method == 'POST':
+        code = request.form['code']
+        #rows = db.query("select *, city.name as capitalname from country left join city on country.capital = city.id where code='" + code + "' ")
+        rows = db.query("select * from country join city on country.capital = city.id where code='" + code + "' ")
+        return render_template("results.html", code=code, options=optionsQuery, results=rows.all())
+    return render_template("results.html", options=optionsQuery.all())
 
 
-@app.route("/<string:scope>", methods=["GET"])
-def search(scope: str):
-    if scope == "country":
-        # get countries from the database and populate options of the drop-down menu
-        pass
-    elif scope == "region":
-        # get regions from the database and populate options of the drop-down menu
-        pass
-    elif scope == "continent":
-        # get continents from the database and populate options of the drop-down menu
-        pass
+@app.route('/region', methods=['GET', 'POST'])
+def region():
+    optionsQuery = db.query("select distinct region, region as dupregion from country")
+
+    if request.method == 'POST':
+        code = request.form['code']
+        rows = db.query("select *, city.name as capitalname from country left join city on country.capital = city.id where region='" + code + "' ")
+        return render_template("results.html", code=code, options=optionsQuery.all(), results=rows.all())
+    return render_template("results.html", options=optionsQuery.all())
+
+@app.route('/continent', methods=['GET', 'POST'])
+def continent():
+    optionsQuery = db.query("select distinct continent, continent as dupcontinent from country")
+
+    if request.method == 'POST':
+        code = request.form['code']
+        rows = db.query("select *, city.name as capitalname from country left join city on country.capital = city.id where continent='" + code + "' ")
+        return render_template("results.html", code=code, options=optionsQuery.all(), results=rows.all())
+    return render_template("results.html", options=optionsQuery.all())
+
+
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
