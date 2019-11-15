@@ -1,17 +1,19 @@
 <html>
     <head>
         <link rel="stylesheet" href="static/css/bootstrap.css" crossorigin="anonymous">
+        <title>Ben Sizelove</title>
     </head>
     <body>
+        <h1 class = "text-center">Py Flask Geo Exercise!</h1>
             <div class="row" style="margin: 20px 0">
                 <div class="col-4 text-center">
-                    <a href="/continent">Continent</a>
+                    <a class="list-group-item list-group-item-primary" href="/country">Country info!</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a href="/region">Region</a>
+                    <a class="list-group-item list-group-item-primary" href="/region">Region info!</a>
                 </div>
                 <div class="col-4 text-center">
-                    <a href="/country">Country</a>
+                    <a  class="list-group-item list-group-item-primary" href="/continent">Continent info!</a>
                 </div>
             </div>
         {% block content %}
