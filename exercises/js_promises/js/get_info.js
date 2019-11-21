@@ -31,7 +31,7 @@ async function get_individual(num, all_numbers) {
         remove();  
     }
     for (var i = num -1; i < num + 2; i++){
-        var number = await Promise.all([getData(`http://numbersapi.com/${i}?json`)]);
+        var number = await Promise.all([getData(`https://numbersapi.com/${i}?json`)]);
         var para = document.createElement("div");
         var node = document.createTextNode(number[0].text);
         para.appendChild(node);
