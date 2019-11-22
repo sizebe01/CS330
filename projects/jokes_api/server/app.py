@@ -2,8 +2,10 @@
 import random
 import pyjokes
 from flask import Flask, request, render_template, url_for, make_response, jsonify,redirect
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
  
  #try on python http.server at localhost:8000 to test it

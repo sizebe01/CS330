@@ -3,13 +3,14 @@
         <title>Jokes API</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
     </head>
-    <body>
+    <body class="w-75 p-75 mx-auto p-3 mb-2 bg-light text-dark font-weight-bold">
         
         <div class='container'>
+            <h3>Choose a random joke or pick your favorite joke number!</h3>
             <form id=form_number class="form-inline" style="margin-top: 30px;">
                     <div>
                         <button type="button" class="btn btn-primary mb-2" onclick = randomjoke() id="getInfo">Get Random joke!</button>
-                        <button type="button" class="btn btn-primary mb-2" onclick = specificjoke() id="getInfo">Remind me of joke!</button>
+                        <button type="button" class="btn btn-secondary mb-2" onclick = specificjoke() id="getInfo">Remind me of joke!</button>
                     </div>
                     <div class="form-group mx-sm-3 mb-2">
                         <label for="number" class="sr-only">JokeNumber</label>
