@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/login" method="POST">
+    <div class="container" style="margin-top: 30px;">
+        <input type="submit" name="username" value="Alice" class="btn btn-dark btn-lg ">
+        <input type="submit" name="username" value="Bob" class="btn btn-dark btn-lg">
+    </div>
+</form>
+
+{% endblock %}
