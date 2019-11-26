@@ -1,15 +1,9 @@
-from flask import Flask
-from flask import request
-from flask import render_template
-from flask import url_for
-from flask import redirect
-from flask import make_response
-from flask import session, escape
+from flask import Flask, request, render_template, url_for, redirect, make_response, session, escape 
 import os
 
 
 app = Flask(__name__)
-app.secret_key = os.urandom(64)
+app.secret_key =  b'PB>n\x8b\x9a\r\x04v\x90I\xe3\xc7\xcf\xc1\x15\x92<\x9e\xf7~LV\x14'
 
 @app.route('/')
 def index():
