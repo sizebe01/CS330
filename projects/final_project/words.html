@@ -1,0 +1,48 @@
+<html>
+
+<head>
+    <title>CS330 Final Project</title>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css/foundation.css" />
+</head>
+
+<body>
+    <h1 class="text-center">Shakespeare</h1>
+        
+    <div id="app-3">
+        <select v-model="selected">
+            <option v-for="option in options" v-bind:value="option.value">
+              {{ option.text }}
+            </option>
+          </select>
+    </div>
+
+    <div id="app-4">
+        <section class="form">
+            <div class="field">
+              <div class="control">
+                <input v-model="form.name" class="input" type="text" placeholder="Choose a word to search for!">
+              </div>
+            </div>
+        </section>
+    </div>
+
+    <div id="getdata">
+      <a class="button" onclick=getdata()>Get Word Count!</a><br/>
+    </div>
+
+    <script src="js/vendor/jquery.js"></script>
+    <script src="js/vendor/what-input.js"></script>
+    <script src="js/vendor/foundation.js"></script>
+    <script src="js/app.js"></script>
+    <!-- Compressed CSS -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>-->
+    <script src='words.js' type='text/javascript'></script>
+    
+
+</body>
+
+</html>
