@@ -9,35 +9,46 @@
 </head>
 
 <body class="w-55 p-55 mx-auto p-3 mb-2 align-center">
-    <h1>Shakespeare</h1>
-     <div class = "container form-inline grid-x grid-padding-x align-center">  
-       
-        <div id="app-3">
-            <select v-model="selected">
-                <option v-for="option in options" v-bind:value="option.value">
-                  {{ option.text }}
-                </option>
-              </select>
-        </div>
+    <h1>Shakespeare!</h1>
+      <div class = "container form-inline grid-x grid-padding-x align-center" id="user">  
 
-        <div id="app-4">
-            <section class="form">
-                <div class="field">
-                  <div class="control">
-                    <input v-model="form.name" class="input" type="text" placeholder="Choose a word to Count!">
-                  </div>
-                </div>
-            </section>
-        </div>
-    </div> 
+              <div id="app-3">
+                  <select v-model="selected">
+                      <option v-for="option in options" v-bind:value="option.value">
+                        {{ option.text }}
+                      </option>
+                    </select>
+              </div>
+
+              <div id="app-4">
+                  <section class="form">
+                      <div class="field">
+                        <div class="control">
+                          <input v-model="form.name" class="input" type="text" placeholder="Choose a word to Count!">
+                        </div>
+                      </div>
+                  </section>
+              </div>
+
+              <div>
+                <input type="checkbox" class="form-control" name="checkbox" id = "check"><br>
+              </div>
+              <div>
+                <p>Check in all Plays!</p>
+              </div> 
+        </div> 
 
     <div class="grid-x grid-padding-x align-center">
         <div id="container">
-          <div>
-              <a type="button" class="btn btn-dark" id="button" onclick=getdata()>Get Word Count!</a>
-              <a type="button" class="btn btn-dark" id="button" onclick=getdata()>Get Total Word Count!</a>
+          <div class="button-group">
+              <a type="button" class="btn btn-dark" id="button" onclick=getinfo()>Get Word Count!</a>
+              <!--<a type="button" class="btn btn-dark" id="button" onclick=getdata()>Get Total Word Count!</a>-->
           </div>
         </div>
+    </div>
+
+    <div id="display_results">
+
     </div>
     
     <script src="js/vendor/jquery.js"></script>
