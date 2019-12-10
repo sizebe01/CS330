@@ -50,7 +50,6 @@ var app3 = new Vue({
   }
 });
 
-
 var app4 = new Vue({
   el: '#app-4',
   data: {
@@ -63,10 +62,8 @@ var app4 = new Vue({
       //console.log(this.form.name);
       return this.form.name;
     }
-  
   }
 });
-
 
 function getdata(){
   var choice = app3.getchoice();

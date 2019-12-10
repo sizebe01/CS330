@@ -1,9 +1,7 @@
 h1{
 font-family: Apple Chancery, cursive;
 text-align: center;
-
 }
-
 
 #button{
     margin: 6px;
@@ -22,5 +20,10 @@ body{
 #container {
     text-align: center;
   }
+
+#table{
+    width: 50%;
+    
+}
   
  
