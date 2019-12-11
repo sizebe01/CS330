@@ -6,9 +6,9 @@
 var app3 = new Vue({
   el: '#app-3',
   data: {
-    selected: "allswell",
+    selected: "cleopatra",
     options: [
-      { text: "All's Well That Ends Well (1602)", value: "allswell" },
+      //{ text: "All's Well That Ends Well (1602)", value: "allswell" },
       { text: "Antony and Cleopatra (1606)", value: "cleopatra" },
       { text: "As You Like It (1599)", value: "asyoulikeit" },
       { text: "Comedy of Errors (1589)", value: "comedy_errors" },
@@ -49,7 +49,7 @@ var app3 = new Vue({
   },
   methods: {
     getchoice: function (event) {
-      //console.log(this.selected);
+      console.log(this);
       return this.selected;
     }
   }
@@ -72,8 +72,6 @@ var app4 = new Vue({
 });
 
 
-
-
 async function getData(url) {
   return fetch(url)
       .then(response => response.json())
@@ -81,22 +79,26 @@ async function getData(url) {
 }
 
 async function getinfo(){
-  var choice = app3.getchoice();
-  var word = app4.getword();
+  var choice = app3.getchoice().toString();
+  var word = app4.getword().toString();
+  
 
-  console.log(choice);
-  console.log(word);
+  //console.log(choice);
+  //console.log(word);
 
     if (document.querySelector('#check').checked) {
       //checking all plays
-      var random_joke = await Promise.all([getData(`https://cs330proj4.herokuapp.com/api/v1/jokes`)]);
-      document.getElementById("display_results").innerHTML = "checked";
-      console.log('cheked');
+      
+      var count = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}/`)]);
+      var data = count[0].count;
+      document.getElementById("display_results").innerHTML = "There are " + data + " uses of the word " + word + " in all of his plays";
+
   } else {
       //checking specified play
-      console.log('not checked');
-      var random_joke = await Promise.all([getData(`https://cs330proj4.herokuapp.com/api/v1/jokes`)]);
-      document.getElementById("display_results").innerHTML = "Not checked";
+
+      var count2 = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}_in_${choice}`)]);
+      var data2 = count2[0].count;
+      document.getElementById("display_results").innerHTML = "There are " + data2 + " uses of the word " + word + " in " + choice;
   }
 }
 

@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="words.css" />
 </head>
 
-<body class="w-55 p-55 mx-auto p-3 mb-2 align-center">
+<body class="align-center" id="content">
     <h1>Shakespeare!</h1>
       <div class = "container form-inline grid-x grid-padding-x align-center" id="user">  
 
@@ -30,12 +30,7 @@
                   </section>
               </div>
 
-              <div>
-                <input type="checkbox" class="form-control" name="checkbox" id = "check"><br>
-              </div>
-              <div>
-                <p>Check in all Plays!</p>
-              </div> 
+              
         </div> 
 
     <div class="grid-x grid-padding-x align-center">
@@ -43,9 +38,17 @@
           <div class="button-group">
               <a type="button" class="btn btn-dark" id="button" onclick=getinfo()>Get Word Count!</a>
               <!--<a type="button" class="btn btn-dark" id="button" onclick=getdata()>Get Total Word Count!</a>-->
+            
+              <div id="middle">
+                <input type="checkbox" class="form-control" name="checkbox" id = "check"><br>
+              </div>
+              <div id="middle">
+                <p>Check for Word in All Plays!</p>
+              </div> 
           </div>
         </div>
     </div>
+    
 
     <div id="display_results">
 

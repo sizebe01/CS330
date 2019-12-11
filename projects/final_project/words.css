@@ -3,6 +3,14 @@ font-family: Apple Chancery, cursive;
 text-align: center;
 }
 
+html, body {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    min-width: 550px;
+    margin:0 auto;
+    
+  }
 #button{
     margin: 30px;
     color: white;
@@ -16,7 +24,7 @@ text-align: center;
 body{
     background-image: url("images/background3.jpg");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100% auto;
 }
 
 #container {
@@ -40,4 +48,13 @@ p{
 #display_results{
     text-align: center;
     font-family: Apple Chancery, cursive;
+}
+
+#middle{
+   margin-top: 40px;
+}
+
+#display_results{
+    font-family: Apple Chancery, cursive;
+    font-size: 20px;
 }
