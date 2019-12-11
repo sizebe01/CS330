@@ -16,7 +16,7 @@ var app3 = new Vue({
       { text: "Cymbeline (1609)", value: "cymbeline" },
       { text: "Hamlet (1600)", value: "hamlet" },
       { text: "Henry IV, Part I (1597)", value: "1henryiv" },
-      { text: "Henry IV, Part II (1597", value: "2henryiv" },
+      { text: "Henry IV, Part II (1597)", value: "2henryiv" },
       { text: "Henry V (1598)", value: "henryv" },
       { text: "Henry VI, Part I (1591)", value: "1henryvi" },
       { text: "Henry VI, Part II (1590)", value: "2henryvi" },
@@ -49,8 +49,49 @@ var app3 = new Vue({
   },
   methods: {
     getchoice: function (event) {
-      console.log(this);
-      return this.selected;
+
+
+      var plays = ["cleopatra",
+                  "asyoulikeit", 
+                  "comedy_errors",
+                  "coriolanus",
+                  "cymbeline", 
+                  "hamlet", 
+                  "1henryiv", 
+                  "2henryiv", 
+                  "henryv", 
+                  "1henryvi", 
+                  "2henryvi", 
+                  "3henryvi", 
+                  "henryviii", 
+                  "julius_caesar", 
+                  "john", 
+                  "lear",
+                  "lll", 
+                  "macbeth", 
+                  "merry_wives", 
+                  "measure", 
+                  "merchant", 
+                  "midsummer", 
+                  "much_ado", 
+                  "othello", 
+                  "pericles", 
+                  "richardii", 
+                  "richardiii", 
+                  "romeo_juliet", 
+                  "taming_shrew", 
+                  "tempest", 
+                  "timon", 
+                  "titus", 
+                  "troilus_cressida",
+                  "twelfth_night", 
+                  "two_gentlemen", 
+                  "winters_tale"]; 
+
+      var index = (plays.indexOf(this.selected));
+      var name = (this.options[index].text);
+
+      return [this.selected,name];
     }
   }
 });
@@ -71,7 +112,6 @@ var app4 = new Vue({
   }
 });
 
-
 async function getData(url) {
   return fetch(url)
       .then(response => response.json())
@@ -79,26 +119,29 @@ async function getData(url) {
 }
 
 async function getinfo(){
-  var choice = app3.getchoice().toString();
+
+  var choice = app3.getchoice();
+  var play_name = choice[1].toString();
+  var play_id = choice[0].toString();
   var word = app4.getword().toString();
   
-
-  //console.log(choice);
-  //console.log(word);
-
+  try{
     if (document.querySelector('#check').checked) {
       //checking all plays
       
       var count = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}/`)]);
       var data = count[0].count;
-      document.getElementById("display_results").innerHTML = "There are " + data + " uses of the word " + word + " in all of his plays";
+      document.getElementById("display_results").innerHTML = "There are " + data + " uses of the word " + word + " in all of Shakespeare's plays";
 
   } else {
       //checking specified play
 
-      var count2 = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}_in_${choice}`)]);
+      var count2 = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}_in_${play_id}`)]);
       var data2 = count2[0].count;
-      document.getElementById("display_results").innerHTML = "There are " + data2 + " uses of the word " + word + " in " + choice;
+      document.getElementById("display_results").innerHTML = "There are " + data2 + " uses of the word " + word + " in " + play_name;
+  }
+  }catch(err) {
+    document.getElementById("display_results").innerHTML = err.message;
   }
 }
 
