@@ -9,6 +9,7 @@ html, body {
     max-width: 100%;
     min-width: 550px;
     margin:0 auto;
+    font-family: Apple Chancery, cursive;
     
   }
 #button{
@@ -47,6 +48,7 @@ p{
 
 #middle{
    margin-top: 40px;
+   font-family: Apple Chancery, cursive;
 }
 
 #display_results{
@@ -58,5 +60,5 @@ p{
 #word{
     text-decoration: underline;
     font-size: 25px;
-    font-style: italic;
+    font-style: bold;
 }
