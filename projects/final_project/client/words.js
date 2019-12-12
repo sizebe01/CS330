@@ -8,7 +8,6 @@ var app3 = new Vue({
   data: {
     selected: "cleopatra",
     options: [
-      //{ text: "All's Well That Ends Well (1602)", value: "allswell" },
       { text: "Antony and Cleopatra (1606)", value: "cleopatra" },
       { text: "As You Like It (1599)", value: "asyoulikeit" },
       { text: "Comedy of Errors (1589)", value: "comedy_errors" },
@@ -106,7 +105,6 @@ var app4 = new Vue({
   },
   methods: {
     getword: function (event) {
-      //console.log(this.form.name);
       return this.form.name;
     }
   }
@@ -131,14 +129,14 @@ async function getinfo(){
       
       var count = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}/`)]);
       var data = count[0].count;
-      document.getElementById("display_results").innerHTML = "There are " + data + " uses of the word " + word + " in all of Shakespeare's plays";
+      document.getElementById("display_results").innerHTML = "There are " + `<u id="word">${data}</u>` + " uses of the word " + `<u id="word">${word}</u>` + " in all of Shakespeare's plays";
 
   } else {
       //checking specified play
 
       var count2 = await Promise.all([getData(`https://shakespeare-api.herokuapp.com/search_for_${word}_in_${play_id}`)]);
       var data2 = count2[0].count;
-      document.getElementById("display_results").innerHTML = "There are " + data2 + " uses of the word " + word + " in " + play_name;
+      document.getElementById("display_results").innerHTML = "There are " + `<u id="word">${data2}</u>` + " uses of the word " + `<u id="word">${word}</u>`+ " in " + `<u id="word">${play_name}</u>`;
   }
   }catch(err) {
     document.getElementById("display_results").innerHTML = err.message;
